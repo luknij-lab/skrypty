@@ -1,0 +1,16 @@
+# User-agents
+Google: Googlebot
+Google Images: Googlebot-Image
+Bing: Bingbot
+Yahoo: Slurp
+Baidu: Baiduspider
+DuckDuckGo: DuckDuckBot
+
+# blokada adresów posiadających jakiegkolwiek parametry (QUERY_STRING)
+Disallow: /*?*
+
+# Blokada konkretnego rozszerzenia:
+Disallow: /*.pdf$
+
+# The most useful feature this adds is the $, which indicates the end of a URL
+Disallow: /*.php$

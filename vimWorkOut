@@ -1,0 +1,154 @@
+# usuniecia - z 'd' mozna wykonywac kombinacje np. d}, dt, dw itd.
+d
+
+# usunięcie całej linii (usunieta linie moza wkleic za pomoca komendy p)
+dd
+
+# usuniecie reszty linii od miejsca kursora
+D
+
+# usuniecie i przejscie do edycji
+C
+
+# usuniecie znaku na ktorym jest kursor
+x
+
+# zastapienie znaku na ktorym jest kursor
+r <znak>
+
+# zastapienie okreslonej liczby znakow 
+<number> r <znak>
+
+# usuniecie okreslonej ilosci znakow na prawo od kursora 
+<number> x
+
+# usuniecie okreslonej linii kodu
+<number> dd
+
+# przewiniecie na sam dol
+G
+
+# przewiniecie na sama gore
+gg
+
+# przeskakiwanie bloku kodu w dol
+}
+
+# przeskakiwanie bloku kodu do gory
+{
+
+# przesuniecie o okreslona ilosc linii/miejsc
+<number> h/j/k/l
+
+# cofniecie wykonanej czynnosci kika razy
+u
+
+# wykonanie ponowne czynnosci
+ctrl + R
+
+# kopiowanie linii
+yy
+
+# wklejanie
+p
+
+# visual mode zaznacza cale linie
+V
+
+# visual mode zaznacza dokladnie co chcemy
+v
+
+# visual mode zaznaczanie w kolumnie
+ctrl v
+
+# dodanie pustej linii na gorze / dole
+O / o
+
+# poruszanie sie do nastepnego slowa horyzontalnie w prawo
+w
+
+# przechodzenie miedzy odstepami
+W
+
+# poruszanie sie do poprzedniego slowa horyzontalnie w lewo
+b
+
+# przejscie do poczatku lini
+0
+
+# przejscie na koniec linii
+$
+
+# przejscie do konkretnej linii
+:<number> 
+
+# przejscie do znaku - przesuniecie kursora przed wskazany znak
+t <znak>
+
+# przejscie do nastepnego wystapienia wskazanego znaku
+t <znak> ;
+
+# przejscie do znaku - przesuniecie kursora na wskazany znak
+f <znak>
+
+# odnajdywanie zamkniecia np. nawiasow
+%
+
+# zmian słowa 
+cw
+
+# zmiana slowa od miejsca gdzie znajduje sie kursor do znaku
+ct <znak>
+
+# srodkowanie ekranu wzgledem kursora
+zz
+
+# przechodzenie do edycji - zaczynamy edytowac tak gdzie jest kursor
+i
+
+# przechodzenie do edycji - zaczynamy o jeden znak dalej niz kursor wskazuje
+a
+
+# przechodzenie do edycji - zaczynamy na koncu linii
+A
+
+# przechodzenie do edycji - zaczynamy na poczatku linii
+I
+
+# powiekszanie znakow
+~
+
+# powiekszanie znakow o okreslona ich liczbe
+<number> ~
+
+# odnajdywanie takiego samego slowa w dokumencie jakie wskazuje kursor
+*
+
+# powtorzenie zmiany
+.
+
+# odstep w prawo
+>
+
+# odstep w lewo
+<
+
+# odstep jak tab o liczbe linii
+<number> >
+
+## MACROS ##
+
+# nagrywanie 
+q <hot key>
+
+# koniec nagrywania
+q
+
+# odtworzenie macro
+@ <HOT KEY> 
+
+# odtworzenie macro w okreslonej liczbie linii
+<number> @ <HOT KEY>
+
+# szukanie
+/<ciag znakow> n <- aby przejsc do kolejnego takiego samego ciagu znakow
