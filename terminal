@@ -1,0 +1,456 @@
+﻿cat - Kopiowanie wejscia do wyjscia.
+grep - Wyszukiwanie ciagow znakow w danych wejsciowych.
+sort - Sortowanie wierszy danych wejsciowych.
+cut - Odczytywanie kolumn z danych wejsciowych.
+sed - Wykonywanie operacji edycyjnych na danych wejsciowych.
+tr - Zamienianie znakow znajdujacych sie w danych wejsciowych na inne znaki.
+
+========================= TERMINAL
+ctrl + d zatrzymanie zadania
+$ ps aux | grep htop - sprawdzanie czy proces htop działa
+
+gedit ~/.bashrc
+
+# wlasny alias
+alias nazwa_wlasna_skrotu="cd ~/ścieżka-do-katalogu-ktory-chcesz-miec-skrot"
+
+# oddanie poniższej linii do bashrc spowoduje, że wszystkie skrypty które umieścimy w wskazanym katalogu będą dostępne z każdego miejsca na pc
+export PATH="$PATH":""
+
+========================= FILES
+# udzielenie dostepu zapisu w folderze /var/www/
+# give you access, and the WebServer access. Apache2 runs as www-data by default
+
+sudo chown $USER:www-data /var/www/my-site
+
+#we need to make sure any files created in the folder are automatically given www-data as the group owner (so that it can actually read files it needs to read); we set the "SetGID" sticky bit for this. We also may want to stop other users (except superuser and the web server) from accessing the folder too, in case there's passwords stored in the data that should not be exposed (see my warning at the bottom of the answer)
+
+sudo chmod g+s /var/www/my-site
+g - the permissions that other users in the file's group have for it
+s - set user or group ID on execution
+
+sudo chmod o-rwx /var/www/my-site
+o - others (neither u, nor g)
+
+# do udzielenia odpowiednich zeswoleń edycji /var/www używaj powyższej metody
+sudo chown -R username:www-data /var/www/strona-www/
+
+# Apache group - How do I add an existing user named vivek to group Apache group www-data?
+sudo adduser {USER-NAME-HERE} {GROUP-NAME-HERE}
+sudo adduser vivek www-data
+
+sudo useradd -g www-data vivek
+
+### set the password for vivek user ###
+sudo passwd vivek
+
+===
+
+# sprawdzanie uzytkownika obecnie zalogowanego
+whoami
+
+# oznaczenia napedow
+lsblk
+
+=== rapair flash drive
+# narzedzeni fsck
+
+# usuwanie katalogow
+rm -r <nazwa-katalogu>
+
+# usuwanie katalogow z (-f force) aby uniknac powtarzalnych zapytan czy usunac zabezpieczony plik
+rm -r -f <nazwa-katalogu>
+
+# usuwanie plików w aktualnym katalogu o określonym rozszerzeniu
+rm *.php
+
+# usuwanie plików w aktualnym katalogu o określonym rozszerzeniu i z potwierdzeniem usunięcia
+rm -i *.php
+
+# sprawdzanie ilość lini w pliku csv
+cat nazwa_pliku | wc -l
+
+# sprawdzanie praw dostepu
+stat file_name
+
+# nadawanie plikom bash praw do wykonania 
+chmod 777 simple_bash.sh
+
+# nadanie praw dla wszystkich katalogów
+find . -type d -exec chmod 755 {} \;
+
+# nadanie praw dla wszystkich plików
+find . -type f -exec chmod 644 {} \;
+
+# nano
+nano -c [filename]
+
+# usuwanie wszystkich plików w katalogu
+rm /home/lukaszszozda/Pobrane/plugins/*
+
+# -v pokazuje proces
+rm -v /home/lukaszszozda/Pobrane/plugins/*
+
+#sprawdzanie ścieżki
+pwd
+
+#pomoc
+?
+
+#znajdź
+find -name "*c*" -type d
+
+#sprawdzanie rozmiaru pliku
+du -sh zrzyt.sql
+
+#zmiana nazwy pliku
+mv nazwaPliku i nowaNazwaPliku
+
+#przenoszenie pliku do innego katalogu
+mv nazwaPliku nazwaKatalogu/
+========================= INSTALL
+# install chrome 
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome*.deb
+sudo apt-get install -f
+
+========================= SSL
+# Sprawdzenie daty ważności certyfikatu SSL
+export SITE_URL="site_url_here"
+export SITE_SSL_PORT="443"
+openssl s_client -connect ${SITE_URL}:${SITE_SSL_PORT} -servername ${SITE_URL} 2?/dev/null | openssl x509 -noout -dates
+
+========================= WEB
+
+# Googlebot headers 
+https://support.google.com/webmasters/answer/1061943?hl=en
+
+#dyrektywy dla robotow
+https://support.google.com/webmasters/answer/1061943?hl=pl
+
+#curl
+curl -- version
+
+#sprawdzanie czy na danej domenie zablokowane są boty
+curl -I -A "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" http://domena.pl
+
+#sprawdzanie czy przekierowanie jest prawidłowe
+curl -I http://domena.pl
+
+#curl tip curl standardowo sprawa domenę curl`owskim user-agentem. Czesto serwery go blokuja i wtedy jest zwracane 403 forbidden
+#wyswietla pierwszą linię z head
+curl -s -I http://domena.pl | head -n 1 
+
+#paramert k powoduje, że nie jest sprawdzana poprawność SSL chain itp.
+-k 
+
+#sprawdzanie IP domeny
+host domena.pl
+whois (IP 123.45.67.89)
+
+#sprawdzanie wersji shell
+$SHELL --version
+
+#podążaj
+-k
+#wyświetl nagłówek
+-I
+
+#sprawdza adres IP
+ifconfig lub ip a
+
+#otwieranie strony w przegladarce tekstowej
+lynx www.google.pl
+
+#ftp midnight commander
+mc
+
+#sprawdzanie ciasteczek
+crtl + K
+
+#pobieranie plików
+wget 'https://domena.pl/plikJakiChcemyPrzesłaćNaSwójSerwer.bin'
+
+# operacja w tle screen
+screen -S zrzut <- uruchomienie procesu w tle o nazwie zrzut
+ctrl+a+d <- wyjście z tła
+screen -ls <- podgląd jakie procesy są uruchomione w tle
+screen -r nazwaProcesu lub pit <- powrót do procesu
+crtl+c lub exit <- wyjście z screena
+
+# jeżeli chcemy aby proces w tle, automatycznie sie zamkną po jego wykoaniu wtedy wpisujemy screen in polecenie jakie chcemy wykonać.
+
+# sprawdzanie rozmiar pliku lub katalogu
+du -sh zrzut.sql
+
+# sprawdzanie przestrzeni dyskowej
+df -h
+
+# dane o pliku
+ls -l (long) nazwaPliku
+la -a (all) pokazuje także ukryte pliki
+
+# wylistowanie plików o danym rozszerzeniu
+ls *.php
+
+========================= WP
+#kopiujemy link przycisku download z podstrony wtyczki ze strony wordpress.org
+wget https://downloads.wordpress.org/plugin/coblocks.zip
+#następnie rozpakowujemy
+unzip coblocks.zip
+#przenosimy katalog do wp-content/plugins/
+mv or scp - zależy od sytuacji
+
+========================= FTP
+#scp przesyłanie pliku na serwer user@hosting <- hosting docelowy
+scp file/folder user@hosting_ip:/katalog/docelowy/na_serwerze
+
+#scp przesyłanie pliku na serwer z podaniem innego portu
+scp -P port_number file/folder user@hosting_ip:/katalog/docelowy/na_serwerze
+
+#scp przesyłanie pliku na lokalną maszynę z serwera
+scp wickerwouq@54.37.121.237:/homez.364/wickerwouq/www/kopi-a/testy <- folder lub plik który chcemy wysłać /home/folder <- miejsce docelowe
+
+#wget przesylanie dużego pliku
+wget 'https://speed.hetzner.de/10GB.bin'
+
+scp -r /home/lukasz/Dokumety/klienci/katalog lukaszszozda@177.227.22.22:/home/..
+
+#sprawdzanie uruchomionych procesów
+systemctl
+
+#pełny backup za pomocą tar
+tar pczf backup.lar.gz <- nazwa tworzonego archiwum
+tar pczf backup.tar.gz zrzut.sql katalog <- pliki i katalogi które chcemy archiwizować
+
+#przesyłanie backupu na inny serwer protokołem scp
+scp backup.tar.gz nazwaUżytkownika@adresHostingu:~ login, hasło i katalog serwera na który chcemy wysłać dane (tylda ~ mówi to tym żeby zgrać do domyślnego katalogu)
+
+========================= SSH
+#ssh login
+ssh user@ip
+
+ssh user@ip -p 2233 <- gdy jest inny port
+
+#szukanie
+ctrl+w
+
+#szukanie odpowiedniej linii kombinacja klawiczy
+ctrl+shift "-"
+
+#wyswietla zainstalowane moduly
+pactl list short modules
+
+#ssh sprawdzanie domyślnego języka na serwerze ssh
+locale
+
+========================= MYSQL
+# zrzus bazy danych mysql - aby baza była dobrze wykonana na końcu pliku powinna być informacja, że prawidłowo została utworzona
+mysqldump -u username nazwa_db -p'hasło' > zrzut.sql
+mysql -u -h -p > zrzut.sql
+
+# backup DB
+mysqldump -u użytkownik -h hosting -p db1  > zrzut.sql
+
+# do ogarnięcia - robienie bazy z parametrami
+mysqldump -u root -ppass --routines --triggers --extended-insert --no-autocommit --lock-all-tables --quick --default-character-set=utf8mb4 "db_to_backup"
+
+### zgrywanie bazy danych do serwera mysql
+mysqldump -u użytkownik -h hosting -p db1  > zrzut.sql
+
+# zgrywanie kilku baz danych
+mysqldump -u użytkownik -h hosting -p hasło --databases db1 db1 > dwie-bazy.sql
+
+# zgrywanie wszystkich baz danych
+mysqldump -u użytkownik -h host -p hasło --all-databases > wszystkie-bazy.sql
+
+# zgrywanie wybranych tabel
+mysqldump -u użytkownik -h host -p db1 wp_posts wp_users > dwie-tabele-bazy.sql
+
+### przywracanie bazy
+mysql -u użytkownik -h localhost -p < all_db.sql
+
+#przywracanie jednej konkretnej bazy
+mysql -u użytkownik -h localhost -p db1 < db1.sql
+
+#przywracanie dwóch baz
+mysql -u użytkownik -h localhost -p < two_db.sql
+
+#przywracanie tabel
+mysql -u użytkownik -h localhost -p db1 < two-tables-db1.sql
+
+# import bazy
+mysql -u <username> -p <databasename> < <filename.sql>
+
+========= IF MYSQL ERROR
+1. mysqldump: Error: 'Access denied; you need (at least one of) the PROCESS privilege(s) for this operation' when trying to dump tablespaces
+--no-tablespaces
+
+2. mysqldump: Couldn't execute 'SELECT COLUMN_NAME
+--column-statistics=0
+
+3. mysqldump: Couldn't execute 'FLUSH TABLES': Access denied
+--lock-all-tables <- blad spowodowany tym zapisem
+
+4. mysqldump: Unknown table 'COLUMN_STATISTICS' in information_schema (1109). 
+INFO: This is due to a new flag that is enabled by default in mysqldump 8. You can disable it by adding --column-statistics=0. 
+
+--column-statistics=0
+
+========================= UNRAR
+1. First you need to install unrar:
+
+sudo apt-get install unrar
+
+2. If you want to unpack all files within the .rar files in the same directory:
+unrar e -r /home/work/software/myfile.rar
+
+3. you want to unpack the files in full path:
+unrar x -r /home/work/software/myfile.rar
+
+========================= ZIP
+# Create an encrypted ZIP file secure.zip from some file:
+zip --encrypt secure.zip file
+
+# Create password protected ZIP archive secure.zip from the several files:
+zip --encrypt secure.zip file1 file2 file3
+
+# Create an encrypted ZIP archive secure.zip from a folder /var/log/:
+zip --encrypt -r secure.zip /var/log/
+
+# Use the following command to uncompress a ZIP file:
+unzip secure.zip
+
+========================= TAR
+#backup strony za pomocą tar
+tar pczf nazwa-tworzonego-archiwum.tar.gz plik01 plik02 katalog <- wskazujemy jakie pliki i katalogi mają być spakowane do archiwum
+
+#rozpakowanie archiwum
+tar zxvf backup.tar.gz
+
+#tworzy archiwum wszystkich plików z podanego katalogu. Można też podać nazwę określonego pliku.
+tar -cvf archiwum.tar katalog_z_plikami/
+
+#Powyższy przykład rozpakowuje archiwum. Bazując na rozszerzeniu (tar, tar.gz, tar.bz2) tar powinien sam zastosować odpowiednie opcje rozpakowywania.
+tar -xvf archiwum.tar
+tar zxvf archiwum.tar
+
+Dostępne opcje:
+-c (tworzy archiwum)
+-t (wyświetla zawartość archiwum)
+-x (rozpakowuje archiwum)
+-f (używa określonego pliku lub urządzenia)
+-Z (kompresuje lub dekompresuje za pomocą programu compress)
+-z (kompresuje lub dekompresuje za pomocą programu gzip)
+
+# sprawdzanie environmental variable
+env
+env | grep PATH
+echo $PATH
+
+========================= XPATH
+# Basic XPath - XPath expression select nodes or list of nodes on the basic of attributes like ID, Name, Classname, etc. frim the XML document as illustrated below.
+xpath "//input[@name='uid']"
+xpath "//input[@type='text']"
+xpath "//label[@id='message23']"
+xpath "//input[@value='RESET']"
+xpath "//*[@class='barone']"
+xpath "//a[@href='http://demo.guru99.com/']"
+xpath "//img[@src='//cdn.guru99.com/images/home/java.png']"
+
+# contains - Contains() is a method used in XPath expression. It is used when the value of any attribute changes dynamically, for example, login information. The contain feature has an ability to find the element with partial text as show in below example.
+xpath "//*[contains(@type,'sub')]"
+xpath "//*[contains(text(),'here')]"
+xpath "//*[contains(@href,'guru99.com')]"
+
+# and or
+xpath "//*[@type='submit' or @name='btnReset']"
+xpath "//input[@type='submit' and @name='btnLogin']"
+
+# Starts-with function
+xpath "//label[starts-with(@id,'message')]"
+
+# Text()
+xpath "//td[text()='UserID']"
+
+# xpath axes methods
+xpath "//*[@type='text']//following::input"
+
+## grymoire.com/Unix/Sed.html
+## gnu.org/software/sed/manual/sed.html
+#sed - Sed has several commands, but most people inly  learn the substitute command: "s" The substitute command changes all occurrences of the regular expression into a new value. A simple example is changing "day" int he "old" file to "night" ine the "new" file:
+
+sed 's/day/night/' <old >new
+
+#or another way for UNIX beginners
+
+sed 's/day/night/' old >new
+
+# Ancestor
+
+========================= ========================= do ogarnięcia ========================= =========================
+for link in `cat baza.csv`; do httpCode=`curl -s -I "$link" | head -n 1`; echo "$link $httpCode"; done
+cat ooo | grep 404
+cat ooo | grep -v 404
+less ~/.bash_history
+cat ooo | sort | uniq -c
+cat ooo | sort | uniq
+for link in `cat baza.csv`; do httpCode=`curl -s -I "$link" | head -n 1`; echo "RewriteRule $link http://dupa.pl"; done | grep 404
+tail
+
+# Aktualne procesy
+ps 
+ps -aux - procesy z przypisanym użytkownikiem
+
+# Create an encrypted ZIP file secure.zip from some file:
+$ zip --encrypt secure.zip file
+Enter password: 
+Verify password: 
+  adding: file (deflated 8%)
+
+# Create password protected ZIP archive secure.zip from the several files:
+$ zip --encrypt secure.zip file1 file2 file3
+Enter password: 
+Verify password: 
+  adding: file1 (stored 15%)
+  adding: file2 (deflated 30%)
+  adding: file3 (deflated 45%)
+
+# Create an encrypted ZIP archive secure.zip from a folder /var/log/:
+$ zip --encrypt -r secure.zip /var/log/
+Enter password: 
+Verify password: 
+  adding: var/log/ (stored 0%)
+  adding: var/log/dmesg.0 (deflated 74%)
+  adding: var/log/dpkg.log.9.gz (deflated 0%)
+  adding: var/log/samba/log.asc-nb (deflated 96%)
+***
+
+# Use the following command to uncompress a ZIP file:
+$ unzip secure.zip
+Enter password:
+***
+
+# zmiana hasla w office
+// nalezy polaczyc sie z VPN
+smbpasswd -U lukasz.szozda -r msadswaw01.bauer-pl.bauermedia.group
+
+dpkg - menadzer pakietow
+dpkg [opcja...] dzilanie
+
+# edycja historii bash
+vi ~/.bash_history
+
+# całkowite usuwanie danych z dysku
+shred -vfz -n 10 /dev/xxx
+
+## TMUX
+(ctrl + b)
+
+()d - aby odłaczyc sie od tmux
+
+$ tmux ls - aby wyświetlić liste sesji
+$ tmux attach -t [session_name] - ponowne polaczenie do sesji
+
+()c - nowe okno
+()w - lista otwartych okien
