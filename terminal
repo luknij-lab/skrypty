@@ -141,6 +141,9 @@ curl -I http://domena.pl
 #wyswietla pierwszą linię z head
 curl -s -I http://domena.pl | head -n 1 
 
+# pobranie adresów url z sitemap.xml
+curl -s sitemap_url | grep "<loc>" | awk -F"<loc>" '{print $2} ' | awk -F"</loc>" '{print $1}'
+
 #paramert k powoduje, że nie jest sprawdzana poprawność SSL chain itp.
 -k 
 
@@ -444,13 +447,16 @@ vi ~/.bash_history
 # całkowite usuwanie danych z dysku
 shred -vfz -n 10 /dev/xxx
 
-## TMUX
-(ctrl + b)
-
-()d - aby odłaczyc sie od tmux
+## TMUX (ctrl + b)
 
 $ tmux ls - aby wyświetlić liste sesji
 $ tmux attach -t [session_name] - ponowne polaczenie do sesji
+$ tmux rename-session -t 0 new_name - zmiana nazwy sesji np. "0" na "new_name"
+$ tmux new -s new_session_name - tworzenie nowej sessji o podanej nazwie np. "new_session_name
+$ tmux kill-session -t new_session_name - zamykanie sesji
 
 ()c - nowe okno
 ()w - lista otwartych okien
+()d - aby odłaczyc sie od tmux
+()1 - w przypadku gdy chcemy przełaczyć się do okna nr 1
+(), - zmiana nazwy okna
