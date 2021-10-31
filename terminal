@@ -460,3 +460,11 @@ $ tmux kill-session -t new_session_name - zamykanie sesji
 ()d - aby odłaczyc sie od tmux
 ()1 - w przypadku gdy chcemy przełaczyć się do okna nr 1
 (), - zmiana nazwy okna
+
+## GREP
+
+-v      Shows all the lines that do not match the searched string
+-c      Displays only the count of matching lines
+-n      Shows the matching line and its number
+-i      Match both (upper and lower) case
+-l      Shows just the name of the file with the string
