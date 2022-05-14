@@ -1,4 +1,34 @@
-﻿cat - Kopiowanie wejscia do wyjscia.
+#
+#  ██      ██    ██ ██   ██ ███    ██ ██      ██       ██████  ███████ ███████ ██  ██████  ███    ██    ██████  ██      
+#  ██      ██    ██ ██  ██  ████   ██ ██      ██       ██   ██ ██      ██      ██ ██       ████   ██    ██   ██ ██      
+#  ██      ██    ██ █████   ██ ██  ██ ██      ██ █████ ██   ██ █████   ███████ ██ ██   ███ ██ ██  ██    ██████  ██      
+#  ██      ██    ██ ██  ██  ██  ██ ██ ██ ██   ██       ██   ██ ██           ██ ██ ██    ██ ██  ██ ██    ██      ██      
+#  ███████  ██████  ██   ██ ██   ████ ██  █████        ██████  ███████ ███████ ██  ██████  ██   ████ ██ ██      ███████ 
+#                                                                                                                       
+# Spis treści
+# 
+# 1.  Podstawowe komendy -------- 24
+# 2.  Prawa dostępu ------------- 60
+# 3.  Pliki i katalogi ---------- 106
+# 4.  Web ----------------------- 177
+# 5.  Programy ------------------ 231
+# 6.  Procesy ------------------- 242
+# 7.  Transfer plików ----------- 263
+# 8.  Archiwa ------------------- 289
+# 9.  SSH ----------------------- 373
+# 10. Baza danych --------------- 399 
+# 11. Xpath --------------------- 424
+# 12. SED ----------------------- 488
+# 13. TMUX ---------------------- 634
+# 14. GREP ---------------------- 653
+# 15. Do ogarnięcia ------------- 664
+                                                                                                                      
+#        __   __   __   __  ___            __        ___          __         ___       __      
+#  |    |__) /  \ |  \ /__`  |   /\  |  | /  \ |  | |__     |__/ /  \  |\/| |__  |\ | |  \ \ / 
+#  |    |    \__/ |__/ .__/  |  /~~\ |/\| \__/ |/\| |___    |  \ \__/  |  | |___ | \| |__/  |  
+#  
+
+cat - Kopiowanie wejscia do wyjscia.
 grep - Wyszukiwanie ciagow znakow w danych wejsciowych.
 sort - Sortowanie wierszy danych wejsciowych.
 cut - Odczytywanie kolumn z danych wejsciowych.
@@ -9,6 +39,18 @@ tr - Zamienianie znakow znajdujacych sie w danych wejsciowych na inne znaki.
 ctrl + d zatrzymanie zadania
 $ ps aux | grep htop - sprawdzanie czy proces htop działa
 
+# wyświetlenie procesów działających w obecnej powłoce
+ps
+
+# wyświetlenie obszernych informacji na temat wszystkich procesów działających w systemie
+ps -ef | less
+
+# zabicie procesu
+kill {id_procesu}
+
+# zabicie procesu w przypadku gdy standardowe polecenie nie będzie skuteczne
+kill -9 {id_procesu}
+
 gedit ~/.bashrc
 
 # wlasny alias
@@ -17,7 +59,14 @@ alias nazwa_wlasna_skrotu="cd ~/ścieżka-do-katalogu-ktory-chcesz-miec-skrot"
 # oddanie poniższej linii do bashrc spowoduje, że wszystkie skrypty które umieścimy w wskazanym katalogu będą dostępne z każdego miejsca na pc
 export PATH="$PATH":""
 
-========================= FILES
+#          __   __                     __   __   __  ___  ___  __       
+#  | |    |__) |__)  /\  |  |  /\     |  \ /  \ /__`  |  |__  |__) |  | 
+#  | |    |    |  \ /~~\ |/\| /~~\    |__/ \__/ .__/  |  |___ |    \__/ 
+#                                                                       
+
+# sprawdzenie jacy użytkownicy zanjdują się w grupie www-data
+grep ^www-data /etc/group
+
 # udzielenie dostepu zapisu w folderze /var/www/
 # give you access, and the WebServer access. Apache2 runs as www-data by default
 
@@ -44,8 +93,6 @@ sudo useradd -g www-data vivek
 ### set the password for vivek user ###
 sudo passwd vivek
 
-===
-
 # sprawdzanie uzytkownika obecnie zalogowanego
 whoami
 
@@ -57,6 +104,11 @@ lsblk
 
 # usuwanie katalogow
 rm -r <nazwa-katalogu>
+
+#            __                                  ___            __   __    
+#  | | |    |__) |    | |__/ |    |    |__/  /\   |   /\  |    /  \ / _` | 
+#  | | |    |    |___ | |  \ |    |    |  \ /~~\  |  /~~\ |___ \__/ \__> | 
+#   
 
 # usuwanie katalogow z (-f force) aby uniknac powtarzalnych zapytan czy usunac zabezpieczony plik
 rm -r -f <nazwa-katalogu>
@@ -108,19 +160,24 @@ mv nazwaPliku i nowaNazwaPliku
 
 #przenoszenie pliku do innego katalogu
 mv nazwaPliku nazwaKatalogu/
-========================= INSTALL
-# install chrome 
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome*.deb
-sudo apt-get install -f
 
-========================= SSL
-# Sprawdzenie daty ważności certyfikatu SSL
-export SITE_URL="site_url_here"
-export SITE_SSL_PORT="443"
-openssl s_client -connect ${SITE_URL}:${SITE_SSL_PORT} -servername ${SITE_URL} 2?/dev/null | openssl x509 -noout -dates
+# sprawdzanie rozmiar pliku lub katalogu
+du -sh zrzut.sql
 
-========================= WEB
+# sprawdzanie przestrzeni dyskowej
+df -h
+
+# dane o pliku
+ls -l (long) nazwaPliku
+la -a (all) pokazuje także ukryte pliki
+
+# wylistowanie plików o danym rozszerzeniu
+ls *.php
+
+#                  ___  __  
+#  | \  /    |  | |__  |__) 
+#  |  \/     |/\| |___ |__) 
+#   
 
 # Googlebot headers 
 https://support.google.com/webmasters/answer/1061943?hl=en
@@ -141,7 +198,7 @@ curl -I http://domena.pl
 #wyswietla pierwszą linię z head
 curl -s -I http://domena.pl | head -n 1 
 
-# pobranie adresów url z sitemap.xml
+# pobranie adresów URL z sitemap.xml
 curl -s sitemap_url | grep "<loc>" | awk -F"<loc>" '{print $2} ' | awk -F"</loc>" '{print $1}'
 
 #paramert k powoduje, że nie jest sprawdzana poprawność SSL chain itp.
@@ -165,14 +222,27 @@ ifconfig lub ip a
 #otwieranie strony w przegladarce tekstowej
 lynx www.google.pl
 
-#ftp midnight commander
-mc
-
 #sprawdzanie ciasteczek
 crtl + K
 
 #pobieranie plików
 wget 'https://domena.pl/plikJakiChcemyPrzesłaćNaSwójSerwer.bin'
+
+#           __   __   __   __   __                 
+#  \  /    |__) |__) /  \ / _` |__)  /\   |\/| \ / 
+#   \/     |    |  \ \__/ \__> |  \ /~~\  |  |  |  
+# 
+
+#ftp midnight commander
+mc
+
+dpkg - menadzer pakietow
+dpkg [opcja...] dzilanie
+
+#             __   __   __   __   ___  __      
+#  \  / |    |__) |__) /  \ /  ` |__  /__` \ / 
+#   \/  |    |    |  \ \__/ \__, |___ .__/  |  
+#   
 
 # operacja w tle screen
 screen -S zrzut <- uruchomienie procesu w tle o nazwie zrzut
@@ -183,28 +253,18 @@ crtl+c lub exit <- wyjście z screena
 
 # jeżeli chcemy aby proces w tle, automatycznie sie zamkną po jego wykoaniu wtedy wpisujemy screen in polecenie jakie chcemy wykonać.
 
-# sprawdzanie rozmiar pliku lub katalogu
-du -sh zrzut.sql
+#sprawdzanie uruchomionych procesów
+systemctl
 
-# sprawdzanie przestrzeni dyskowej
-df -h
+# Aktualne procesy
+ps 
+ps -aux - procesy z przypisanym użytkownikiem
+              
+#              ___  __             __   ___  ___  __      __               __       
+#  \  / | |     |  |__)  /\  |\ | /__` |__  |__  |__)    |__) |    | |__/ /  \ |  | 
+#   \/  | |     |  |  \ /~~\ | \| .__/ |    |___ |  \    |    |___ | |  \ \__/ |/\| 
+#   
 
-# dane o pliku
-ls -l (long) nazwaPliku
-la -a (all) pokazuje także ukryte pliki
-
-# wylistowanie plików o danym rozszerzeniu
-ls *.php
-
-========================= WP
-#kopiujemy link przycisku download z podstrony wtyczki ze strony wordpress.org
-wget https://downloads.wordpress.org/plugin/coblocks.zip
-#następnie rozpakowujemy
-unzip coblocks.zip
-#przenosimy katalog do wp-content/plugins/
-mv or scp - zależy od sytuacji
-
-========================= FTP
 #scp przesyłanie pliku na serwer user@hosting <- hosting docelowy
 scp file/folder user@hosting_ip:/katalog/docelowy/na_serwerze
 
@@ -219,9 +279,6 @@ wget 'https://speed.hetzner.de/10GB.bin'
 
 scp -r /home/lukasz/Dokumety/klienci/katalog lukaszszozda@177.227.22.22:/home/..
 
-#sprawdzanie uruchomionych procesów
-systemctl
-
 #pełny backup za pomocą tar
 tar pczf backup.lar.gz <- nazwa tworzonego archiwum
 tar pczf backup.tar.gz zrzut.sql katalog <- pliki i katalogi które chcemy archiwizować
@@ -229,7 +286,95 @@ tar pczf backup.tar.gz zrzut.sql katalog <- pliki i katalogi które chcemy archi
 #przesyłanie backupu na inny serwer protokołem scp
 scp backup.tar.gz nazwaUżytkownika@adresHostingu:~ login, hasło i katalog serwera na który chcemy wysłać dane (tylda ~ mówi to tym żeby zgrać do domyślnego katalogu)
 
-========================= SSH
+#                      __   __                   
+#  \  / | | |     /\  |__) /  ` |__| | |  |  /\  
+#   \/  | | |    /~~\ |  \ \__, |  | | |/\| /~~\ 
+#  
+
+========================= UNRAR
+1. First you need to install unrar:
+
+sudo apt-get install unrar
+
+2. If you want to unpack all files within the .rar files in the same directory:
+unrar e -r /home/work/software/myfile.rar
+
+3. you want to unpack the files in full path:
+unrar x -r /home/work/software/myfile.rar
+
+========================= ZIP
+# Create an encrypted ZIP file secure.zip from some file:
+zip --encrypt secure.zip file
+
+# Create password protected ZIP archive secure.zip from the several files:
+zip --encrypt secure.zip file1 file2 file3
+
+# Create password protected ZIP archive secure.zip with all files in current directory:
+zip --encrypt -r secure.zip .
+
+# Create an encrypted ZIP archive secure.zip from a folder /var/log/:
+zip --encrypt -r secure.zip /var/log/
+
+# Use the following command to uncompress a ZIP file:
+unzip secure.zip
+
+# Create an encrypted ZIP file secure.zip from some file:
+$ zip --encrypt secure.zip file
+Enter password: 
+Verify password: 
+  adding: file (deflated 8%)
+
+# Create password protected ZIP archive secure.zip from the several files:
+$ zip --encrypt secure.zip file1 file2 file3
+Enter password: 
+Verify password: 
+  adding: file1 (stored 15%)
+  adding: file2 (deflated 30%)
+  adding: file3 (deflated 45%)
+
+# Create an encrypted ZIP archive secure.zip from a folder /var/log/:
+$ zip --encrypt -r secure.zip /var/log/
+Enter password: 
+Verify password: 
+  adding: var/log/ (stored 0%)
+  adding: var/log/dmesg.0 (deflated 74%)
+  adding: var/log/dpkg.log.9.gz (deflated 0%)
+  adding: var/log/samba/log.asc-nb (deflated 96%)
+
+# Use the following command to uncompress a ZIP file:
+$ unzip secure.zip
+Enter password:
+
+========================= TAR
+#backup strony za pomocą tar
+tar -pczf nazwa-tworzonego-archiwum.tar.gz plik01 plik02 katalog <- wskazujemy jakie pliki i katalogi mają być spakowane do archiwum
+
+#rozpakowanie archiwum
+tar -zxvf backup.tar.gz
+
+# pakowanie z wyłaczeniem jednego lub więcej katalogów/plików. Na końcu wskazanego folderu w exclude nie powinno być slasha.
+tar -pczf backWP.tar.gz --exclude='/wp-content/updraft' wp-content -v
+
+#tworzy archiwum wszystkich plików z podanego katalogu. Można też podać nazwę określonego pliku.
+tar -cvf archiwum.tar katalog_z_plikami/
+
+#Powyższy przykład rozpakowuje archiwum. Bazując na rozszerzeniu (tar, tar.gz, tar.bz2) tar powinien sam zastosować odpowiednie opcje rozpakowywania.
+tar -xvf archiwum.tar
+tar zxvf archiwum.tar
+
+Dostępne opcje:
+-c (tworzy archiwum)
+-t (wyświetla zawartość archiwum)
+-x (rozpakowuje archiwum)
+-f (używa określonego pliku lub urządzenia)
+-Z (kompresuje lub dekompresuje za pomocą programu compress)
+-z (kompresuje lub dekompresuje za pomocą programu gzip)
+
+#            __   __       
+#  | \_/    /__` /__` |__| 
+#  | / \    .__/ .__/ |  | 
+#
+
 #ssh login
 ssh user@ip
 
@@ -246,8 +391,16 @@ pactl list short modules
 
 #ssh sprawdzanie domyślnego języka na serwerze ssh
 locale
+# sprawdzanie environmental variable
+env
+env | grep PATH
+echo $PATH
 
-========================= MYSQL
+#          __       __          __                 __       
+#  \_/    |__)  /\   /  /\     |  \  /\  |\ | \ / /  ` |__| 
+#  / \    |__) /~~\ /_ /~~\    |__/ /~~\ | \|  |  \__, |  | 
+#  
+
 # zrzus bazy danych mysql - aby baza była dobrze wykonana na końcu pliku powinna być informacja, że prawidłowo została utworzona
 mysqldump -u username nazwa_db -p'hasło' > zrzut.sql
 mysql -u -h -p > zrzut.sql
@@ -273,13 +426,13 @@ mysqldump -u użytkownik -h host -p db1 wp_posts wp_users > dwie-tabele-bazy.sql
 ### przywracanie bazy
 mysql -u użytkownik -h localhost -p < all_db.sql
 
-#przywracanie jednej konkretnej bazy
+# przywracanie jednej konkretnej bazy
 mysql -u użytkownik -h localhost -p db1 < db1.sql
 
-#przywracanie dwóch baz
+# przywracanie dwóch baz
 mysql -u użytkownik -h localhost -p < two_db.sql
 
-#przywracanie tabel
+# przywracanie tabel
 mysql -u użytkownik -h localhost -p db1 < two-tables-db1.sql
 
 # import bazy
@@ -300,58 +453,11 @@ INFO: This is due to a new flag that is enabled by default in mysqldump 8. You c
 
 --column-statistics=0
 
-========================= UNRAR
-1. First you need to install unrar:
+#                __       ___      
+#  \_/ |    \_/ |__)  /\   |  |__| 
+#  / \ |    / \ |    /~~\  |  |  | 
+#  
 
-sudo apt-get install unrar
-
-2. If you want to unpack all files within the .rar files in the same directory:
-unrar e -r /home/work/software/myfile.rar
-
-3. you want to unpack the files in full path:
-unrar x -r /home/work/software/myfile.rar
-
-========================= ZIP
-# Create an encrypted ZIP file secure.zip from some file:
-zip --encrypt secure.zip file
-
-# Create password protected ZIP archive secure.zip from the several files:
-zip --encrypt secure.zip file1 file2 file3
-
-# Create an encrypted ZIP archive secure.zip from a folder /var/log/:
-zip --encrypt -r secure.zip /var/log/
-
-# Use the following command to uncompress a ZIP file:
-unzip secure.zip
-
-========================= TAR
-#backup strony za pomocą tar
-tar pczf nazwa-tworzonego-archiwum.tar.gz plik01 plik02 katalog <- wskazujemy jakie pliki i katalogi mają być spakowane do archiwum
-
-#rozpakowanie archiwum
-tar zxvf backup.tar.gz
-
-#tworzy archiwum wszystkich plików z podanego katalogu. Można też podać nazwę określonego pliku.
-tar -cvf archiwum.tar katalog_z_plikami/
-
-#Powyższy przykład rozpakowuje archiwum. Bazując na rozszerzeniu (tar, tar.gz, tar.bz2) tar powinien sam zastosować odpowiednie opcje rozpakowywania.
-tar -xvf archiwum.tar
-tar zxvf archiwum.tar
-
-Dostępne opcje:
--c (tworzy archiwum)
--t (wyświetla zawartość archiwum)
--x (rozpakowuje archiwum)
--f (używa określonego pliku lub urządzenia)
--Z (kompresuje lub dekompresuje za pomocą programu compress)
--z (kompresuje lub dekompresuje za pomocą programu gzip)
-
-# sprawdzanie environmental variable
-env
-env | grep PATH
-echo $PATH
-
-========================= XPATH
 # Basic XPath - XPath expression select nodes or list of nodes on the basic of attributes like ID, Name, Classname, etc. frim the XML document as illustrated below.
 xpath "//input[@name='uid']"
 xpath "//input[@type='text']"
@@ -379,7 +485,10 @@ xpath "//td[text()='UserID']"
 # xpath axes methods
 xpath "//*[@type='text']//following::input"
 
-## SED 
+#              __   ___  __  
+#  \_/ | |    /__` |__  |  \ 
+#  / \ | |    .__/ |___ |__/ 
+#    
 
 # In this tutorial, you’ll use a copy of the BSD Software License to experiment with sed. On Ubuntu, execute the following commands to copy the BSD license file to your home directory so you can work with it:
 
@@ -522,7 +631,41 @@ sed 's/day/night/' old >new
 
 # Ancestor
 
-========================= ========================= do ogarnięcia ========================= =========================
+#               ___                
+#  \_/ | | |     |   |\/| |  | \_/ 
+#  / \ | | |     |   |  | \__/ / \ 
+#   
+
+# TMUX (ctrl + b)
+
+tmux ls - aby wyświetlić liste sesji
+tmux attach -t [session_name] - ponowne polaczenie do sesji
+tmux rename-session -t 0 new_name - zmiana nazwy sesji np. "0" na "new_name"
+tmux new -s new_session_name - tworzenie nowej sessji o podanej nazwie np. "new_session_name
+tmux kill-session -t new_session_name - zamykanie sesji
+
+()c - nowe okno
+()w - lista otwartych okien
+()d - aby odłaczyc sie od tmux
+()1 - w przypadku gdy chcemy przełaczyć się do okna nr 1
+(), - zmiana nazwy okna
+
+#                 __   __   ___  __  
+#  \_/ | \  /    / _` |__) |__  |__) 
+#  / \ |  \/     \__> |  \ |___ |    
+#       
+
+-v	Shows all the lines that do not match the searched string
+-c	Displays only the count of matching lines
+-n	Shows the matching line and its number
+-i	Match both (upper and lower) case
+-l	Shows just the name of the file with the string
+
+#               __   __      __   __        __          ___  __         
+#  \_/ \  /    |  \ /  \    /  \ / _`  /\  |__) |\ | | |__  /  ` |  /\  
+#  / \  \/     |__/ \__/    \__/ \__> /~~\ |  \ | \| | |___ \__, | /~~\ 
+# 
+
 for link in `cat baza.csv`; do httpCode=`curl -s -I "$link" | head -n 1`; echo "$link $httpCode"; done
 cat ooo | grep 404
 cat ooo | grep -v 404
@@ -532,70 +675,23 @@ cat ooo | sort | uniq
 for link in `cat baza.csv`; do httpCode=`curl -s -I "$link" | head -n 1`; echo "RewriteRule $link http://dupa.pl"; done | grep 404
 tail
 
-# Aktualne procesy
-ps 
-ps -aux - procesy z przypisanym użytkownikiem
-
-# Create an encrypted ZIP file secure.zip from some file:
-$ zip --encrypt secure.zip file
-Enter password: 
-Verify password: 
-  adding: file (deflated 8%)
-
-# Create password protected ZIP archive secure.zip from the several files:
-$ zip --encrypt secure.zip file1 file2 file3
-Enter password: 
-Verify password: 
-  adding: file1 (stored 15%)
-  adding: file2 (deflated 30%)
-  adding: file3 (deflated 45%)
-
-# Create an encrypted ZIP archive secure.zip from a folder /var/log/:
-$ zip --encrypt -r secure.zip /var/log/
-Enter password: 
-Verify password: 
-  adding: var/log/ (stored 0%)
-  adding: var/log/dmesg.0 (deflated 74%)
-  adding: var/log/dpkg.log.9.gz (deflated 0%)
-  adding: var/log/samba/log.asc-nb (deflated 96%)
-***
-
-# Use the following command to uncompress a ZIP file:
-$ unzip secure.zip
-Enter password:
-***
-
-# zmiana hasla w office
-// nalezy polaczyc sie z VPN
-smbpasswd -U lukasz.szozda -r msadswaw01.bauer-pl.bauermedia.group
-
-dpkg - menadzer pakietow
-dpkg [opcja...] dzilanie
-
 # edycja historii bash
 vi ~/.bash_history
 
 # całkowite usuwanie danych z dysku
 shred -vfz -n 10 /dev/xxx
 
-## TMUX (ctrl + b)
+# przegląd innych dysków
+lsblk
 
-$ tmux ls - aby wyświetlić liste sesji
-$ tmux attach -t [session_name] - ponowne polaczenie do sesji
-$ tmux rename-session -t 0 new_name - zmiana nazwy sesji np. "0" na "new_name"
-$ tmux new -s new_session_name - tworzenie nowej sessji o podanej nazwie np. "new_session_name
-$ tmux kill-session -t new_session_name - zamykanie sesji
+========================= INSTALL
+# install chrome 
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome*.deb
+sudo apt-get install -f
 
-()c - nowe okno
-()w - lista otwartych okien
-()d - aby odłaczyc sie od tmux
-()1 - w przypadku gdy chcemy przełaczyć się do okna nr 1
-(), - zmiana nazwy okna
-
-## GREP
-
--v      Shows all the lines that do not match the searched string
--c      Displays only the count of matching lines
--n      Shows the matching line and its number
--i      Match both (upper and lower) case
--l      Shows just the name of the file with the string
+========================= SSL
+# Sprawdzenie daty ważności certyfikatu SSL
+export SITE_URL="site_url_here"
+export SITE_SSL_PORT="443"
+openssl s_client -connect ${SITE_URL}:${SITE_SSL_PORT} -servername ${SITE_URL} 2?/dev/null | openssl x509 -noout -dates
