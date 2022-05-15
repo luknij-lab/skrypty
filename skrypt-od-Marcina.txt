@@ -1,0 +1,5 @@
+mk@mk ~ $ for i in `cat test`; do i1=`echo $i | awk -F';' '{print $1}'`;
+i2=`echo $i | awk -F';' '{print $2}'`; host=`host "$i1" | head -n 1`;
+echo "$i1---$i2===$host"; done
+artefakt.pl---12===artefakt.pl has address 54.38.131.23
+pro-pozycje.pl---22===pro-pozycje.pl has address 217.182.73.53
