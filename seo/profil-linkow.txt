@@ -1,0 +1,88 @@
+1. Dobry katalog - kiedy link może być zły?
+Jeśli w naszym profilu linków głównym źródłem linków są katalogi gdzie powrarzają się te same anchory lub ta sama treść opisu w katalogach.
+
+2. Dobry blog - kiedy link może być zły?
+Jeśli w naszym profilu linków głównym źródłem linków są blogin, precle, blogi na darmowych platformach i powtarzają się te same anchory lub treści opisu.
+
+3. Nazwa firmy - kiedy link może być zły?
+Jeśli profilem linków został utworzony przez wiele linków z tym samym anchorem na nazwę firmy ale same domeny linkujące są wątpliwej jakości. Słabo wyglądają, mają niską ocenę w majestic, posiadają mało linków, treści niema, slbo jest słabej jakości. Jeżeli link będzie pochodził z takich wielu stron to będzie zły profil linków.
+
+4. Nofollow - kiedy może być zły?
+Jeśli w naszym profilu linków głównym źródłem linków są linki nofollow gdzie powtarzają się te same anchory lub linki występują na wątpliwej jakości stronach np. komentarze na blogach.
+
+5. Link z banera - kiedy może być zły?
+Jeśli w naszym  profilu linków znajdzie się dużo linków banerowych gdzie w znaczniku alt powtarza się ten sam anchor sprzedażowy.
+
+6. Link site wide - kiedy może być zły?
+iJeśli w naszym profilu linków znajdzie się dużo linków z tej samej domeny gdzie anchor będzie sprzedażowy.
+
+7. Link z posat na forum - kiedy może być dobry?
+Jeśli w naszym profilu linków głównym źródłem linków nie są fora internetowe, a sam link jest w postaci adresu URL i toczy się w tematycznym wątku nieprzepełnionym linkami nietematycznymi w kolejnych postach. 
+
+8. Link z podpisu w stopce - kiedy może być dobry?
+Jeśli w naszym profilu linków głównym źródłem linków nie są fora internetowe, a sam link jest w postaci adresu URL/brandu. Forum nie może być przepełnione tematami gdzie userzy postują z różnej tematyki linkami.
+
+9. Link z seokatalogów - kiedy może być dobry?
+Jeśli w naszym profilu linków głównym źródłem linków nie są katalogi, a sam link jest w postaci afresu URL/brandu. Treść opisu w seokatalogu nie jest duplikatem, a sam katalog wygląda na zadbany i posiada widoczność w Google. Nawet jeśli pojawi się kilkanaście linków z seokatalogów to też będzie ok.
+
+10. Link z komentarza na blogu - kiedy może być dobry?
+jeśli w naszym profilu linków głównym źródłem linków nie są komentarze, a sam link jest w postaci brandu/imeinia i nazwiska pracownika/właściciela, które się pojawia na stronie. Pod wpisami nie widać setek komentarzy dodanych przez seoaddery. link nofollow.
+
+11. Link site-wide - kiedy może być dobry?
+Jeśli anchor tekstem jest w postaci brandu/adresu URL. Kiedy kierowany jest na nazwę brandu, ewentualnie półsprzedażony lub adres domeny głównej np. artefakt.pl.
+
+Pamietaj, algorytm wykrywa wzorzec nienaturalnych linków. Wzorzec najłatwiej wykryć poprzez:
+- anchor text - jeśli jest za dużo linków na daną frazę kluczową. Przy nowych domenach należy linkować na tło, brand, adresy URL. Koło 4-go miesiąca możan powoli zaczynać linkować na EM.
+- źródła linków - jeżeli będzie tworzyć profil linków na podstawie jednego lub dwóch źródeł typu blogi, katalogi.
+- przyrost linków - szczewgólnie ma znaczneie przy nowych domenach. Jeżeli za dużo będzie dodanych z podobnych anchorów bez większej dywersyfikacji, to nasz profil linków może być oflagowany.
+- brak dywersyfikacji - dywersyfikować linkowanie podstron. Nie możemy się skupiać na linkowaniu na kilku podstron na których np. zależy klientowi ale musimy linkować szeroko. Musimy dywersyfikować linkowane podstrony. Musimy pamiętać, że strona głowna powinna mieć największą ilość linków, a pozostałe mniej z dużą dywersyfikacją linków. 
+- bazę disavow - im częściej domena trafi do disavow, tym jest większa szansa, że domena zostanie oflagowana i nie będzie przekazywać żadnej mocy.
+
+Analiza linków:
+1. Pobierzemy pod uwagę całe domeny, a nie poszczególne domeny. Np. pobieramy listę z gsc i odsiewamy nasze zaplecza.
+2. Pobieramy dane na temat reffering domain z trzech źródeł: Majestic, aHrefs, GSC. W pierwszej kolejności analizuje dane z GSC.
+3. Scalamy wszystkie domeny w jedną listę
+4. usuwamy duplikaty
+5. Usuwamy zaplecze Artefaktu (moduł disavow w starej szafie)
+6. Na podstawie powstałej listy sprawdzamy źródła linków
+7. Na podstawie powsrałej listy sprawdzamy anchory linków
+8. W pierwszej kolejności na listę, która wyląduje w disavow wrzucamy linki:
+-- fora gdzie anchorem jest EM, formu jest zaspamowane itd.
+-- spamerskie fora gdzie link nawet jest w postaci URL/brand. Taka domena prawdopodobnie będzie oflagowana i nie będzie przekazywać mocy
+-- spamerskie seokatalogi (szczególnie jeśli link w postali EM)
+-- spamerskie linki z komentarzy (szczególnie jeśli link w postaci EM)
+-- site-wide jeśłi link jest w posraci EM
+-- link ze zhakowanych stron
+-- spamerskie precle
+-- profile jesli w BIO jest EM
+-- wszelkiej maści inne spamerskie skrypty SEO
+9. Pozostałą listę domen przeglądamy ręcznie (wystarczy sprawdzić jeden link z domeny aby rozpoznać czy jest on tokstyczny)
+10. W dalszej kolejności zwracamy uwagę na:
+-- anchor text (jeśli EM w tematycznym wpisie to dobry link)
+-- jakość strony (design)
+-- ilość linków wychodzących z najbliższego otoczenia linka. Jeżeli wychodzi niedużo linków to linki będą miały większą moc, szczególnie jeśli wpis jest tematyczny. Jeśli linki prowadzą do różnych tematów to taki link nie będzie dobry.
+-- widoczność strony w Google/senuto. Jeżeli domena jest widoczna w senuto to: 1. domena posaida treści, które są w miarę dobre 2. że taka domena musi mieć w miare dobre linki, które do niej linkują.
+-- ilość RD (domen linkujących/) i BL (linki zwrotne) domeny na której znajduje się link. Jeżeli domena z której mamy link nie jest podlinkowana, to nasz linki będzie miała słabą moc. Jak mamy z takiej domeny link to można go wrzucić do disavow. 
+-- ilość TF (Majestic/aHrefs) domeny na której znajduje się link. Jeżli TF (TF > 5 lub 10) jest wykokie i do tego jest widoczność w senuto. Linki  z takiej domeny powinien być dobry.
+
+Do disavow powinny trafić domeny które:
+-- mają link EM z nietematycznej treści
+-- jakość strony wskazuje na jej zaniedbanie (duplikacje wew., może być zhakowana, thin content)
+-- duża ilość linków wychodzących z najbliższego otoczenia
+-- niewielka lub zerowa widoczność domeny w senuto. To powina nam się zapalić lampka, że coś jest nie tak
+-- zerowa ilość RD i BL
+-- bardzo niski wskaźnik TF np. koreluje z tym że niema tam linków lub bardzo duża linków ale słabej jakości
+
+11. Do disavow wrzucamy tylko domeny
+12. Plik disavow wgrywamy na każdą wersję strony w GSC
+
+Warto pamiętać że:
+- linki kierjące do 404 nie będą widoczne w GSC ale będą psuły nam widoczność całej domeny. należy ściągnąć linki z majestic i ahrefs aby sprawdzić czy linki nie kierują do 404. Jeśli np. strona była zhakowana strony i w domenie były stworzone podstrony i dodatkowo były podlikowane. Później po analizie podstrony zhakowane lądowało tam 404 lub 410 (powinny być 410 ustawione). Linki z 404 powinny wylądować w pliku disavow.
+- po wgraniu pliku disavow linki z domen będą nadal widoczne w GSC
+- dopiero po ponowniej indeksacji linki wrzucowe do disavow nie będą brane pod uwagę przy rankingowaniu strony ( jeśli linki są spamerskie ich ponowna indeksacja może trwać długo - warto skorzystać z indeksera)
+- wgranie nowego pliku disvow zastępuje stary plik, a więc koniecznie trzeba też skopiować linki ze starego do niwego pliku.
+- jeśli zrobiłeś analizę źle i wrzuciłeś dobre linki do disavow to zamiast wzrostów będziesz miał spadki
+- dzieki narzędzi disavow Google nauczyło się rozpoznawać źródła spamerskich linków i oflagowanie wiele darmowych miejscówek linków.
+
+Rada na przyszłość
+Dywersyfikuj anchory, źródła, linkowane podstrony
